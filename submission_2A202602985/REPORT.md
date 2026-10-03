@@ -4,7 +4,7 @@
 
 ## 1. Thiết lập
 
-- **Môi trường:** MacBook Air (Apple Silicon), GPU `mps`, PyTorch 2.8.0, Python 3.9 (README yêu cầu 3.10+; code dùng `from __future__ import annotations` nên chạy được). Notebook chạy từ đầu đến cuối ~23 phút, không lỗi. Có nhánh `IN_COLAB` cho Colab; số liệu trong báo cáo lấy từ lần chạy trên Mac, và notebook cũng đã được chạy lại (Restart & Run All) trên Colab/Kaggle theo yêu cầu của đề.
+- **Môi trường:** MacBook Air (Apple Silicon), GPU `mps`, PyTorch 2.8.0, Python 3.9 (README yêu cầu 3.10+; code dùng `from __future__ import annotations` nên chạy được). Notebook chạy từ đầu đến cuối ~23 phút, không lỗi. Có nhánh `IN_COLAB` cho Colab nhưng **toàn bộ bài chỉ được chạy trên Mac, chưa chạy lại trên Colab/Kaggle** (đề yêu cầu Colab hoặc Kaggle; đây là một hạn chế).
 - **Dữ liệu:** CoverType, `train` 464 809 / `eval` 116 203 theo `split_metadata.csv` (không sửa). Val = 20% train (phân tầng, seed 42): 371 847 train / 92 962 val. Chuẩn hoá 10 cột số bằng mean/std của train (val, eval chỉ được áp dụng).
 - **Model:** `M-base` 54→256→128→7, ReLU, 47 879 tham số (có `assert`), softmax nằm trong loss. **Baseline:** CE, SGD+momentum 0.9, **lr 0.3** (chọn bằng val trong lưới 0.01–1.0), He, batch 512, 20 epoch, FP32, không dropout/clip. Mốc "đoán lớp đa số": accuracy val 0.4876.
 - **Đã thử:** ☑ loss ☑ optimizer ☑ hyper-parameter ☑ dropout ☑ clipping ☑ mixed precision ☑ init (7/7).
